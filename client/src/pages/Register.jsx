@@ -19,19 +19,20 @@ const Register = () => {
   }
 
   const handleSubmit = async e => {
-    console.log(inputs)
+    // console.log(inputs)
     e.preventDefault() // to avoid refresh on submit
     try {
       // http://localhost:8800/api/auth/register
       // try proxy in package.json to give relative path instead of direct path
+      // set up proxy to save cookies in local storage
 
-      // await axios.post("http://localhost:8800/api/auth/register",inputs)
+      await axios.post("/auth/register",inputs)
       naivgate("/login")
 
-      const res = await axios.post("auth/register",inputs)
-      console.log(res);
+      // const res = await axios.post("http://localhost:8800/api/auth/register",inputs)
+      // console.log(res);
     } catch (err) {
-      console.log(err);
+      // console.log(err);
       setError(err.response.data)
     }
 
